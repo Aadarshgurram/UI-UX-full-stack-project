@@ -37,4 +37,8 @@ THANKS TO L AND T EDUTECH
 
  CART PAGE:
 
+ ![Image](https://github.com/user-attachments/assets/2e3ff993-6213-4be1-9bd2-16d9751e09aa)
+
+ CHECKOUT PAGE:
+
  
