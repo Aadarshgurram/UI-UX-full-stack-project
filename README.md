@@ -30,4 +30,11 @@ THANKS TO L AND T EDUTECH
 
 ![Image](https://github.com/user-attachments/assets/ac07774f-7b51-4d49-9831-ffddbc6b8c8b)
 ![Image](https://github.com/user-attachments/assets/e6ef91fa-61dd-46d3-ae89-809b60146a42)
+
+ PRODUCT PAGE:
+
+ ![Image](https://github.com/user-attachments/assets/d1cc188d-8946-4dc0-9532-780aa20aa676)
+
+ CART PAGE:
+
  
