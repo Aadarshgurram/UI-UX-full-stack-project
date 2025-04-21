@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders - MyStore</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">MyStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart <span id="cart-count">0</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Orders 📦</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Orders Page -->
+    <div class="container mt-5">
+        <h2>Your Orders</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order #</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="orders-list">
+                <!-- Orders will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let orders = JSON.parse(localStorage.getItem("orders")) || [];
+            let ordersList = document.getElementById("orders-list");
+
+            function renderOrders() {
+                ordersList.innerHTML = "";
+                if (orders.length === 0) {
+                    ordersList.innerHTML = `<tr><td colspan="4">No orders yet.</td></tr>`;
+                } else {
+                    orders.forEach((order, index) => {
+                        order.items.forEach(item => {
+                            ordersList.innerHTML += `
+                                <tr>
+                                    <td>#${index + 1}</td>
+                                    <td>${item.name}</td>
+                                    <td>Rs. ${item.price}</td>
+                                    <td>${order.date}</td>
+                                </tr>
+                            `;
+                        });
+                    });
+                }
+            }
+
+            renderOrders();
+        });
+    </script>
+
+</body>
+</html>

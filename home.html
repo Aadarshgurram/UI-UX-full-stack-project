@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - MyStore</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 200vh;
+        }
+        .container {
+            flex: 1;
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto;
+        }
+        #carouselExample {
+            max-width: 80%;
+            margin: auto;
+            margin-bottom: 300px;
+        }
+        .carousel-inner img {
+            height: 500px;
+            object-fit: cover;
+        }
+        .product-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 220px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.03);
+        }
+        .product-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .card-text {
+            font-size: 16px;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        .btn-primary, .btn-success {
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+        .btn-success:hover {
+            background: #218838;
+        }
+        @media screen and (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        #search-input {
+            width: 300px;
+            border-radius: 50px;
+            border: 1px solid #007bff;
+        }
+        .navbar-nav {
+            margin-right: 20px;
+        }
+        #submit {
+            border-radius: 50px;
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">MyStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart <span id="cart-count">0</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="orders.html">Orders</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            👤 Profile
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#">My Profile</a></li>
+                            <li><a class="dropdown-item" href="orders.html">My Orders</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="landingPage.html">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2" type="search" placeholder="Search products..." aria-label="Search" id="search-input">
+                    <button class="btn btn-outline-primary" type="submit" id="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div id="carouselExample" class="carousel slide container" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="smartwatch.jpg" class="d-block w-100" alt="Deal 1">
+            </div>
+            <div class="carousel-item">
+                <img src="airpodes.jpg" class="d-block w-100" alt="Deal 2">
+            </div>
+            <div class="carousel-item">
+                <img src="laptop.jpg" class="d-block w-100" alt="Deal 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="container">
+        <h2>Our Featured Products</h2>
+        <div class="product-container">
+            <div class="product-card" onclick="window.location.href='smartwatch.html'">
+                <img src="hero-bg.jpeg" class="product-img" alt="Smartwatch">
+                <h5 class="card-title">Smartwatch Pro</h5>
+                <p class="card-text">Rs. 1999</p>
+                <div class="d-flex justify-content-between mt-2 gap-1">
+                    <button class="btn btn-primary btn-sm add-to-cart" data-name="Smartwatch Pro" data-price="1999">🛒 Cart</button>
+                    <button class="btn btn-success btn-sm buy-now" data-name="Smartwatch Pro" data-price="1999">⚡ Buy</button>
+                </div>
+            </div>
+            <div class="product-card" onclick="window.location.href='mobile.html'">
+                <img src="iQOO-Neo-10-5G.webp" class="product-img" alt="IQOO Neo 10R">
+                <div>
+                    <h5 class="card-title">IQOO neo 10R</h5>
+                    <p class="card-text">Rs. 27999</p>
+                    <div class="d-flex justify-content-between mt-2 gap-1">
+                        <button class="btn btn-primary btn-sm add-to-cart" data-name="IQOO neo 10R" data-price="27999">🛒 Cart</button>
+                        <button class="btn btn-success btn-sm buy-now" data-name="IQOO neo 10R" data-price="27999">⚡ Buy</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" onclick="window.location.href='buds.html'">
+                <img src="oneplus buds.webp" class="product-img" alt="Oneplus NordBuds 3">
+                <div>
+                    <h5 class="card-title">Oneplus NordBuds 3</h5>
+                    <p class="card-text">Rs. 2999</p>
+                    <div class="d-flex justify-content-between mt-2 gap-1">
+                        <button class="btn btn-primary btn-sm add-to-cart" data-name="Oneplus NordBuds 3" data-price="2999">🛒 Cart</button>
+                        <button class="btn btn-success btn-sm buy-now" data-name="Oneplus NordBuds 3" data-price="2999">⚡ Buy</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" onclick="window.location.href='macbook.html'">
+                <img src="mackbook.webp" class="product-img" alt="Apple Macbook M4">
+                <div>
+                    <h5 class="card-title">Apple Macbook M4</h5>
+                    <p class="card-text">Rs. 159999</p>
+                    <div class="d-flex justify-content-between mt-2 gap-1">
+                        <button class="btn btn-primary btn-sm add-to-cart" data-name="Apple Macbook M4" data-price="159999">🛒 Cart</button>
+                        <button class="btn btn-success btn-sm buy-now" data-name="Apple Macbook M4" data-price="159999">⚡ Buy</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br><br>
+        <a href="cart.html">
+            <button class="btn btn-secondary">🛍 View Cart</button>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 MyStore | <a href="#" class="text-white">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartCount = document.getElementById("cart-count");
+
+            function updateCartCount() {
+                cartCount.textContent = cart.length;
+            }
+
+            // Add to cart
+            document.querySelectorAll(".add-to-cart").forEach(button => {
+                button.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    const name = this.getAttribute("data-name");
+                    const price = parseFloat(this.getAttribute("data-price"));
+                    const quantity = 1;
+
+                    const item = { name, price, quantity };
+                    cart.push(item);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    updateCartCount();
+                    alert(`${name} added to cart!`);
+                });
+            });
+
+            // Buy now
+            document.querySelectorAll(".buy-now").forEach(button => {
+                button.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    const name = this.getAttribute("data-name");
+                    const price = parseFloat(this.getAttribute("data-price"));
+                    const quantity = 1;
+
+                    const checkoutItem = { name, price, quantity };
+                    sessionStorage.setItem("checkoutProduct", JSON.stringify(checkoutItem));
+                    window.location.href = "checkout.html";
+                });
+            });
+
+            // Search
+            document.getElementById("submit").addEventListener("click", function (event) {
+                event.preventDefault();
+                let searchTerm = document.getElementById("search-input").value;
+                alert(`Searching for: ${searchTerm}`);
+            });
+
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

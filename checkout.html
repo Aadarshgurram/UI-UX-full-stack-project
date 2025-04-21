@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .checkout-container {
+      background: #fff;
+      padding: 25px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .product-summary {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      padding: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .total {
+      font-weight: bold;
+      text-align: right;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .btn-place-order {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .btn-place-order:hover {
+      background-color: #45a049;
+    }
+
+    .no-item {
+      text-align: center;
+      color: #d32f2f;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <p>Please review your order and enter your details.</p>
+
+    <div class="product-summary" id="productSummary">
+      <!-- Product info will be dynamically inserted here -->
+    </div>
+
+    <form id="checkoutForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Shipping Address</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-place-order">Place Order</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const productData = JSON.parse(sessionStorage.getItem("checkoutProduct"));
+      const productSummary = document.getElementById("productSummary");
+
+      if (productData) {
+        const totalPrice = productData.price * productData.quantity;
+
+        productSummary.innerHTML = `
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${productData.name}</td>
+                <td>${productData.quantity}</td>
+                <td>₹${productData.price.toFixed(2)}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="total">Total Price: ₹${totalPrice.toFixed(2)}</div>
+        `;
+      } else {
+        productSummary.innerHTML = `<p class="no-item">No items in checkout.</p><div class="total">Total Price: ₹0.00</div>`;
+      }
+
+      // Form submission handler
+      document.getElementById("checkoutForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const fullName = document.getElementById("fullName").value;
+        const address = document.getElementById("address").value;
+
+        alert(`Order placed successfully for ${fullName} at ${address}! 🎉`);
+
+        sessionStorage.removeItem("checkoutProduct");
+        window.location.href = "home.html"; // You can replace this with an order confirmation page if you have one
+      });
+    });
+  </script>
+</body>
+</html>
