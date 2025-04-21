@@ -28,4 +28,6 @@ THANKS TO L AND T EDUTECH
 
  HOME PAGE:
 
+![Image](https://github.com/user-attachments/assets/ac07774f-7b51-4d49-9831-ffddbc6b8c8b)
+![Image](https://github.com/user-attachments/assets/e6ef91fa-61dd-46d3-ae89-809b60146a42)
  
